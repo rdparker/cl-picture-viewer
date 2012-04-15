@@ -19,16 +19,33 @@
 
 (let ((table-layout-panel-1)
       (picture-box-1)
-      (check-box-1))
+      (check-box-1)
+      (flow-layout-panel-1)
+      (show-button)
+      (clear-button)
+      (background-button)
+      (close-button)
+      (open-file-dialog-1)
+      (color-dialog-1))
   (defun form1-initialize-component (form)
     "Add the various UI elements to FORM."
     (setf table-layout-panel-1 (new "TableLayoutPanel")
 	  picture-box-1 (new "PictureBox")
-	  check-box-1 (new "CheckBox"))
+	  check-box-1 (new "CheckBox")
+	  flow-layout-panel-1 (new "FlowLayoutPanel")
+	  show-button (new "Button")
+	  clear-button (new "Button")
+	  background-button (new "Button")
+	  close-button (new "Button")
+	  open-file-dialog-1 (new "OpenFileDialog")
+	  color-dialog-1 (new "ColorDialog"))
     [SuspendLayout table-layout-panel-1]
     ;; This cast seems to be a problem.  Let's try without calling BeginInit.
     ;;    [BeginInit (cast picture-box-1 "ISupportInitialize")]
+    [SuspendLayout flow-layout-panel-1]
     [SuspendLayout form]
+
+    ;; tableLayoutPanel1
     (setf [%ColumnCount table-layout-panel-1] 2
 	  [%Dock table-layout-panel-1] [$DockStyle.Fill]
 	  [%Location table-layout-panel-1] (new "Point" 0 0)
