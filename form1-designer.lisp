@@ -126,6 +126,11 @@
 	  [%TabIndex clear-button] 1
 	  [%Text clear-button] "Clear the picture"
 	  [%UseVisualStyleBackColor clear-button] t)
+    [+Click clear-button
+	    (new "EventHandler"
+		 (lambda (sender e)
+		   (declare (ignore sender e))
+		   (setf [%Image picture-box-1] (make-null-object "Image"))))]
 
     ;; backgroundButton
     (setf [%AutoSize background-button] t
