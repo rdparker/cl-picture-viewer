@@ -6,14 +6,17 @@
 
 (import-type "System.ComponentModel.ISupportInitialize"
 	     (load-assembly "System"))
+(import-type "System.EventHandler" (load-assembly "mscorlib"))
+
 (import-types "System.Drawing" "Point" "Size" "SizeF")
 (import-types "System.Windows.Forms" "BorderStyle" "Button" "CheckBox"
-	      "ColorDialog" "ColumnStyle" "DockStyle"
-	     "FlowLayoutPanel" "FlowDirection" "OpenFileDialog"
-	     "PictureBox" "RowStyle" "SizeType"
-	     "TableLayoutColumnStyleCollection"
-	     "TableLayoutControlCollection" "TableLayoutPanel")
+	      "ColorDialog" "ColumnStyle" "DialogResult" "DockStyle"
+	      "FlowLayoutPanel" "FlowDirection" "OpenFileDialog"
+	      "PictureBox" "RowStyle" "SizeType"
+	      "TableLayoutColumnStyleCollection"
+	      "TableLayoutControlCollection" "TableLayoutPanel")
 
+(use-namespace "System")
 (use-namespace "System.ComponentModel")
 (use-namespace "System.Drawing")
 (use-namespace "System.Windows.Forms")
@@ -28,6 +31,7 @@
       (close-button)
       (open-file-dialog-1)
       (color-dialog-1))
+
   (defun form1-initialize-component (form)
     "Add the various UI elements to FORM."
     (setf table-layout-panel-1 (new "TableLayoutPanel")
@@ -105,6 +109,14 @@
 	  [%TabIndex show-button] 0
 	  [%Text show-button] "Show a picture"
 	  [%UseVisualStyleBackColor show-button] t)
+
+    (defun show-button-click (sender e)
+      (declare (ignore sender e))
+      "Handle when the Show a picture button is clicked"
+      (when [Equals [ShowDialog open-file-dialog-1] [$DialogResult.OK]]
+	[Load picture-box-1 [%FileName open-file-dialog-1]]))
+
+    [+Click show-button (new "EventHandler" #'show-button-click)]
 
     ;; clearButton
     (setf [%AutoSize clear-button] t
