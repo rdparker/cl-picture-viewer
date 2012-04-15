@@ -2,3 +2,8 @@
 
 (in-package #:picture-viewer)
 
+(defun new-form1 ()
+  "Create a new Form1 object"
+  (let ((form1 (new "Form")))
+    (form1-initialize-component form1)
+    form1))
