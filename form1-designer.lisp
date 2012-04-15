@@ -140,6 +140,14 @@
 	  [%TabIndex background-button] 2
 	  [%Text background-button] "Set the background color"
 	  [%UseVisualStyleBackColor background-button] t)
+    [+Click background-button
+	    (new "EventHandler"
+		 (lambda (sender e)
+		   (declare (ignore sender e))
+		   (when [Equals [ShowDialog color-dialog-1]
+				 [$DialogResult.OK]]
+		     (setf [%BackColor picture-box-1]
+			   [%Color color-dialog-1]))))]
 
     ;; closeButton
     (setf [%AutoSize close-button] t
