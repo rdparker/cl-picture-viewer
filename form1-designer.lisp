@@ -12,7 +12,7 @@
 (import-types "System.Windows.Forms" "BorderStyle" "Button" "CheckBox"
 	      "ColorDialog" "ColumnStyle" "DialogResult" "DockStyle"
 	      "FlowLayoutPanel" "FlowDirection" "OpenFileDialog"
-	      "PictureBox" "RowStyle" "SizeType"
+	      "PictureBox" "PictureBoxSizeMode" "RowStyle" "SizeType"
 	      "TableLayoutColumnStyleCollection"
 	      "TableLayoutControlCollection" "TableLayoutPanel")
 
@@ -32,7 +32,7 @@
       (close-button)
       (open-file-dialog-1)
       (color-dialog-1))
- 
+
   (defun form1-initialize-component (form)
     "Add the various UI elements to FORM."
     (setf the-form form
@@ -89,6 +89,14 @@
 	  [%TabIndex check-box-1] 1
 	  [%Text check-box-1] "Stretch"
 	  [%UseVisualStyleBackColor check-box-1] t)
+    [+CheckedChanged check-box-1
+		     (new "EventHandler"
+			  (lambda (sender e)
+			    (declare (ignore sender e))
+			    (setf [%SizeMode picture-box-1]
+				  (if [%Checked check-box-1]
+				      [$PictureBoxSizeMode.StretchImage]
+				      [$PictureBoxSizeMode.Normal]))))]
 
     ;; flowLayoutPanel1
     (let ((controls [%Controls flow-layout-panel-1]))
@@ -162,7 +170,7 @@
     [+Click close-button
 	    (new "EventHandler"
 		 (lambda (sender e)
-		   (declare (ignore e))
+		   (declare (ignore sender e))
 		   [Close the-form]))]
 
     ;; openFileDialog1
