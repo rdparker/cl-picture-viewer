@@ -115,6 +115,15 @@
 	  [%Text clear-button] "Clear the picture"
 	  [%UseVisualStyleBackColor clear-button] t)
 
+    ;; backgroundButton
+    (setf [%AutoSize background-button] t
+	  [%Location background-button] (new "Point" 114 3)
+	  [%Name background-button] "backgroundButton"
+	  [%Size background-button] (new "Size" 137 23)
+	  [%TabIndex background-button] 2
+	  [%Text background-button] "Set the background color"
+	  [%UseVisualStyleBackColor background-button] t)
+
     ;; Form1
     [Add [%Controls form] table-layout-panel-1]
     (setf [%AcceptButton form] show-button
