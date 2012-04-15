@@ -124,10 +124,20 @@
 	  [%Text background-button] "Set the background color"
 	  [%UseVisualStyleBackColor background-button] t)
 
+    ;; closeButton
+    (setf [%AutoSize close-button] t
+	  [%Location close-button] (new "Point" 33 3)
+	  [%Name close-button] "closeButton"
+	  [%Size close-button] (new "Size" 75 23)
+	  [%TabIndex close-button] 3
+	  [%Text close-button] "Close"
+	  [%UseVisualStyleBackColor close-button] t)
+
     ;; Form1
     [Add [%Controls form] table-layout-panel-1]
     (setf [%AcceptButton form] show-button
 	  [%AutoScaleDimensions form] (new "SizeF" 6 13)
+	  [%CancelButton form] close-button
 	  [%ClientSize form] (new "Size" 534 312)
 	  [%Name form] "Form1"
 	  [%Text form] "Picture Viewer")
