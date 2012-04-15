@@ -39,7 +39,9 @@
 
 (defun picture-viewer ()
   "Run the picture-viewer application"
+  [Application.EnableVisualStyles]
+  #-allegro
+  [Application.SetCompatibleTextRenderingDefault nil]
   [Application.Run (new-form1)])
 
 (disable-rdnzl-syntax)
-;;; "picture-viewer" goes here. Hacks and glory await!
