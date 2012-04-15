@@ -8,8 +8,9 @@
 	     (load-assembly "System"))
 (import-types "System.Drawing" "Point" "Size" "SizeF")
 (import-types "System.Windows.Forms" "BorderStyle" "Button" "CheckBox"
-	     "ColorDialog" "ColumnStyle" "DockStyle" "FlowLayoutPanel"
-	     "OpenFileDialog" "PictureBox" "RowStyle" "SizeType"
+	      "ColorDialog" "ColumnStyle" "DockStyle"
+	     "FlowLayoutPanel" "FlowDirection" "OpenFileDialog"
+	     "PictureBox" "RowStyle" "SizeType"
 	     "TableLayoutColumnStyleCollection"
 	     "TableLayoutControlCollection" "TableLayoutPanel")
 
@@ -61,7 +62,8 @@
       [Add row-styles (new "RowStyle" [$SizeType.Percent] 90)]
       [Add row-styles (new "RowStyle" [$SizeType.Percent] 10)]
       [Add controls picture-box-1 0 0]
-      [Add controls check-box-1 0 1])
+      [Add controls check-box-1 0 1]
+      [Add controls flow-layout-panel-1 1 1])
 
     ;; pictureBox1
     (setf [%BorderStyle picture-box-1] [$BorderStyle.Fixed3D])
@@ -82,6 +84,19 @@
 	  [%Text check-box-1] "Stretch"
 	  [%UseVisualStyleBackColor check-box-1] t)
 
+    ;; FlowLayoutPanel1
+    (let ((controls [%Controls flow-layout-panel-1]))
+      [Add controls show-button]
+      [Add controls clear-button]
+      [Add controls background-button]
+      [Add controls close-button])
+    (setf [%Dock flow-layout-panel-1] [$DockStyle.Fill]
+	  [%FlowDirection flow-layout-panel-1] [$FlowDirection.RightToLeft]
+	  [%Location flow-layout-panel-1] (new "Point" 83 283)
+	  [%Name flow-layout-panel-1] "flowLayoutPanel1"
+	  [%Size flow-layout-panel-1] (new "Size" 448 26)
+	  [%TabIndex flow-layout-panel-1] 2)
+
     ;; Form1
     [Add [%Controls form] table-layout-panel-1]
     (setf [%AutoScaleDimensions form] (new "SizeF" 6 13)
@@ -90,6 +105,8 @@
 	  [%Text form] "Picture Viewer")
     [ResumeLayout table-layout-panel-1 nil]
     [PerformLayout table-layout-panel-1]
+    [ResumeLayout flow-layout-panel-1 nil]
+    [PerformLayout flow-layout-panel-1]
     [ResumeLayout form]))
 
 (disable-rdnzl-syntax)
