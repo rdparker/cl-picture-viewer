@@ -4,5 +4,6 @@
   :serial t
   :depends-on (#:rdnzl)
   :components ((:file "package")
-               (:file "picture-viewer")))
-
+	       (:file "picture-viewer")
+	       (:file "form1-designer")
+	       (:file "form1")))
