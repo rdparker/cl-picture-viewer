@@ -121,8 +121,8 @@
 	  [%UseVisualStyleBackColor show-button] t)
 
     (defun show-button-click (sender e)
-      (declare (ignore sender e))
       "Handle when the Show a picture button is clicked"
+      (declare (ignore sender e))
       (when [Equals [ShowDialog open-file-dialog-1] [$DialogResult.OK]]
 	[Load picture-box-1 [%FileName open-file-dialog-1]]))
 
