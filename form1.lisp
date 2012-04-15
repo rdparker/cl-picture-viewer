@@ -2,6 +2,10 @@
 
 (in-package #:picture-viewer)
 
+(import-types "System.Windows.Forms" "Form")
+
+(use-namespace "System.Windows.Forms")
+
 (defun new-form1 ()
   "Create a new Form1 object"
   (let ((form1 (new "Form")))
