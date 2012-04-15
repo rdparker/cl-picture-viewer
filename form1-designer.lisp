@@ -84,7 +84,7 @@
 	  [%Text check-box-1] "Stretch"
 	  [%UseVisualStyleBackColor check-box-1] t)
 
-    ;; FlowLayoutPanel1
+    ;; flowLayoutPanel1
     (let ((controls [%Controls flow-layout-panel-1]))
       [Add controls show-button]
       [Add controls clear-button]
@@ -97,9 +97,19 @@
 	  [%Size flow-layout-panel-1] (new "Size" 448 26)
 	  [%TabIndex flow-layout-panel-1] 2)
 
+    ;; showButton
+    (setf [%AutoSize show-button] t
+	  [%Location show-button] (new "Point" 357 3)
+	  [%Name show-button] "showButton"
+	  [%Size show-button] (new "Size" 88 23)
+	  [%TabIndex show-button] 0
+	  [%Text show-button] "Show a picture"
+	  [%UseVisualStyleBackColor show-button] t)
+
     ;; Form1
     [Add [%Controls form] table-layout-panel-1]
-    (setf [%AutoScaleDimensions form] (new "SizeF" 6 13)
+    (setf [%AcceptButton form] show-button
+	  [%AutoScaleDimensions form] (new "SizeF" 6 13)
 	  [%ClientSize form] (new "Size" 534 312)
 	  [%Name form] "Form1"
 	  [%Text form] "Picture Viewer")
