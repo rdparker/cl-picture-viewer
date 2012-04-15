@@ -133,6 +133,12 @@
 	  [%Text close-button] "Close"
 	  [%UseVisualStyleBackColor close-button] t)
 
+    ;; openFileDialog1
+    (setf [%FileName open-file-dialog-1] "openFileDialog1"
+	  [%Filter open-file-dialog-1]
+	  "JPEG Files (*.jpg)|*.jpg|PNG Files (*.png)|*.png|BMP Files (*.bmp)|*.bmp|All files (*.*)|*.*"
+	  [%Title open-file-dialog-1] "Select a picture file")
+
     ;; Form1
     [Add [%Controls form] table-layout-panel-1]
     (setf [%AcceptButton form] show-button
