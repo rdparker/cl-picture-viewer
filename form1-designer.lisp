@@ -21,7 +21,8 @@
 (use-namespace "System.Drawing")
 (use-namespace "System.Windows.Forms")
 
-(let ((table-layout-panel-1)
+(let ((the-form)
+      (table-layout-panel-1)
       (picture-box-1)
       (check-box-1)
       (flow-layout-panel-1)
@@ -31,10 +32,11 @@
       (close-button)
       (open-file-dialog-1)
       (color-dialog-1))
-
+ 
   (defun form1-initialize-component (form)
     "Add the various UI elements to FORM."
-    (setf table-layout-panel-1 (new "TableLayoutPanel")
+    (setf the-form form
+	  table-layout-panel-1 (new "TableLayoutPanel")
 	  picture-box-1 (new "PictureBox")
 	  check-box-1 (new "CheckBox")
 	  flow-layout-panel-1 (new "FlowLayoutPanel")
@@ -157,6 +159,11 @@
 	  [%TabIndex close-button] 3
 	  [%Text close-button] "Close"
 	  [%UseVisualStyleBackColor close-button] t)
+    [+Click close-button
+	    (new "EventHandler"
+		 (lambda (sender e)
+		   (declare (ignore e))
+		   [Close the-form]))]
 
     ;; openFileDialog1
     (setf [%FileName open-file-dialog-1] "openFileDialog1"
