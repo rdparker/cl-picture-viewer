@@ -106,6 +106,15 @@
 	  [%Text show-button] "Show a picture"
 	  [%UseVisualStyleBackColor show-button] t)
 
+    ;; clearButton
+    (setf [%AutoSize clear-button] t
+	  [%Location clear-button] (new "Point" 257 3)
+	  [%Name clear-button] "clearButton"
+	  [%Size clear-button] (new "Size" 94 23)
+	  [%TabIndex clear-button] 1
+	  [%Text clear-button] "Clear the picture"
+	  [%UseVisualStyleBackColor clear-button] t)
+
     ;; Form1
     [Add [%Controls form] table-layout-panel-1]
     (setf [%AcceptButton form] show-button
